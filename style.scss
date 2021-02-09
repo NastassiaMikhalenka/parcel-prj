@@ -1,0 +1,35 @@
+$maincolor: grey;
+$navColor: aqua;
+
+@mixin block($columns){
+    display: grid;
+    grid-template-columns: repeat($columns, 1fr);
+}
+
+@mixin name {
+    text-transform: uppercase;
+}
+
+%container{
+    display: block;
+    margin: 0 auto;
+    max-width: 1020px; 
+}
+
+body{
+    background-color: $maincolor;
+    color: $navColor;
+
+    ul{
+        @include block(4); // принимает параметры 
+        @include name;
+        @extend %container; // расширяет наследование 
+
+        li {
+            color: $navColor;
+                @media(max-width: 1200px){
+                font-size: 36px;
+            }
+        }
+    }
+}
